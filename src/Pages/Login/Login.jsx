@@ -9,7 +9,7 @@ const Login = () => {
         const email = e.target.email.value;
         const password = e.target.password.value;
 
-        const userInfo = ({ email, password })
+        console.log(email, password)
 
 
     }
@@ -40,7 +40,7 @@ const Login = () => {
                             Login with Google
                         </button>
 
-                        <p className='mt-4'>You don't have any Account? Please <Link className='text-blue-800 hover:underline' to={'/register'}>Register</Link></p>
+                        <p className='mt-4 text-center'>You don't have any Account? Please <Link className='text-blue-800 hover:underline' to={'/register'}>Register</Link></p>
                     </fieldset>
                 </form>
             </div>
