@@ -1,0 +1,8 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+
+li a .active{
+  border: none;
+ border-bottom: rgb(255, 76, 11) ;
+}
