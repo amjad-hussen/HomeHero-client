@@ -4,7 +4,6 @@ import { Link } from 'react-router';
 
 const Service = ({serivePromise}) => {
     const services = use(serivePromise)
-    console.log(services)
     return (
         <div className='mt-10'>
             <h1 className='text-center font-bold text-2xl md:text-4xl lg:text-6xl '>Our <span className='text-orange-600'>Service</span></h1>
