@@ -6,7 +6,7 @@ const ServiceDetails = () => {
     const { serviceName, category, price, description, email, imageUrl, providerName } = service
     return (
         <div className='w-11/12 mx-auto'>
-            <div className='border border-orange-600 shadow-2xl my-10  flex-col md:flex-row  flex gap-5 rounded-xl'>
+            <div className='border border-orange-600 shadow-2xl my-16  flex-col md:flex-row  flex gap-5 rounded-xl'>
                 <div>
                     <img className='w-full h-60 md:w-[400px] md:h-[300px] lg:w-[500px] lg:h-[350px] md:m-5 p-5 md:p-0 shadow-xl object-cover rounded-xl ' src={imageUrl} alt="" />
                 </div>
