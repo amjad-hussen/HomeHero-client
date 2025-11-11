@@ -1,17 +1,21 @@
 import React, { use, useState } from 'react';
 import logo from '../../assets/logo.png'
-import { Link, NavLink } from 'react-router';
-import '../../App.css'
+import './Navbar.css'
+import { Link, Navigate, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import ppicon from '../../assets/ppicon.png'
+
+
 
 const Navbar = () => {
     const [open, setOpen] = useState(false)
     const { user, signOutUser } = use(AuthContext)
+    const navigate = useNavigate()
+
 
     const links = <>
         <li> <NavLink to={"/"}> Home</NavLink></li>
-        <li> <NavLink to={"/allService"}> Services</NavLink></li>
+        <li> <NavLink to={"/allService"}> All Services</NavLink></li>
         {
             user && <>
                 <li> <NavLink to={"/myServices"}> My Services</NavLink></li>
@@ -34,8 +38,9 @@ const Navbar = () => {
     }
 
     const handleViewProfile = () => {
+        
+        navigate("/profile")
         setOpen(false);
-        // navigate("/profile")
     }
 
     return (
@@ -63,11 +68,17 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="relative">
-                            <img onClick={() => setOpen(!open)} className='w-10 h-10 rounded-full overflow-hidden cursor-pointer border-2 border-orange-600 p-[1px]' src={ppicon} alt="Profile" />
+                            <img onClick={() => setOpen(!open)} className='w-10 h-10 rounded-full overflow-hidden cursor-pointer border-2 border-orange-600 p-[1px]' src={user?.photoURL || ppicon} alt="Profile" />
                             {
                                 open &&
                                 <div className='absolute right-0 mt-2 w-40 bg-white border shadow-md rounded-md z-50'>
-                                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 font-semibold">View Profile</button>
+
+                                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 font-semibold">{user?.displayName || "Guest"}</button>
+
+                                    
+                                    <button onClick={handleViewProfile} className="block w-full text-left px-4 py-2 hover:bg-gray-200 font-semibold">View Profile</button>
+                                    
+
                                     <button onClick={handleSignOut} className="block w-full text-left px-4 py-2 hover:bg-gray-200 text-red-600 font-semibold">Log Out</button>
 
                                 </div>
@@ -76,7 +87,7 @@ const Navbar = () => {
                         :
                         <div className='flex gap-2'>
                             <Link to={"/login"} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold">Login</Link>
-                            <Link to={"/register"} className="btn border-2 border-orange-600   font-bold">Register</Link>
+                            <Link to={"/register"} className="btn border-2 border-orange-600 text-orange-600  font-bold">Register</Link>
                         </div>
 
 

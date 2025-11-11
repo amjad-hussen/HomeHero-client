@@ -1,14 +1,16 @@
 import React, { use } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 
 const Register = () => {
-    const {signInWithGoogle} = use(AuthContext)
+    const {signInWithGoogle,createUser,setUser  } = use(AuthContext)
+
+    const navigate = useNavigate()
 
     const handleGoogleSignIn = () => {
         signInWithGoogle()
         .then(result => {
-            console.log(result.user)
+            setUser(result.user)
 
             const newUser = {
                 name: result.user.displayName,
@@ -26,6 +28,7 @@ const Register = () => {
             .then(res => res.json())
             .then(data => {
                 console.log('data after user save', data)
+                navigate("/")
             })
 
         })
@@ -35,15 +38,41 @@ const Register = () => {
     }
 
     const handleRegister = e => {
-        
-        e.preventDefault();
+         e.preventDefault();
 
         const name = e.target.name.value;
         const email = e.target.email.value;
         const photo = e.target.photo.value;
         const password = e.target.password.value;
 
-        console.log(name, email, password, photo)
+        const newUser = {name, email, password, photo}
+
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+        alert("Password must be 8+ chars & include uppercase, lowercase, number & special char");
+        return;
+    }
+
+        createUser(email, password)
+
+        fetch('http://localhost:3000/users', {
+            method:'POST',
+            headers:{
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+        })
+        .then(res => res.json())
+        .then(result => {
+                setUser(result.user)
+                navigate("/")
+        })
+        .catch(error => {
+            console.log(error)
+        })
+        
+        
     }
 
     return (
@@ -54,17 +83,17 @@ const Register = () => {
                     <fieldset className="fieldset">
 
                         <label className="label">Name</label>
-                        <input type="text" name='name' className="input" placeholder="Name" />
+                        <input type="text" name='name' className="input" placeholder="Name" required />
 
                         <label className="label">Email</label>
-                        <input type="email" name='email' className="input" placeholder="Email" />
+                        <input type="email" name='email' className="input" placeholder="Email" required/>
 
                         <label className="label">PhotoURL</label>
-                        <input type="text" name='photo' className="input" placeholder="PhotoURL" />
+                        <input type="text" name='photo' className="input" placeholder="PhotoURL" required/>
                         
                         
                         <label className="label">Password</label>
-                        <input type="password" name='password' className="input" placeholder="Password" />
+                        <input type="password" name='password' className="input" placeholder="Password" required/>
 
                         <button className="btn text-white font-bold mt-4 bg-orange-500 hover:bg-orange-600">Register</button>
 

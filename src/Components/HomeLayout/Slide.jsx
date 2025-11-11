@@ -1,6 +1,7 @@
 import React, { use } from 'react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from "framer-motion";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -10,7 +11,11 @@ import { Link } from 'react-router';
 const Slide = ({slidePromise}) => {
     const slides = use(slidePromise)
     return (
-        <div>
+        <motion.div 
+        initial={{opacity:0, scale:0.5}}
+        animate={{opacity:1, scale:1}}
+        transition={{duration:0.5}}
+        >
             <Swiper modules = {[Pagination, Autoplay]} pagination ={ {clickable:true }} autoplay= {{delay:5000}} loop={true} >
 
                 {
@@ -31,7 +36,7 @@ const Slide = ({slidePromise}) => {
                 }
 
             </Swiper>
-        </div>
+        </motion.div>
     );
 };
 
