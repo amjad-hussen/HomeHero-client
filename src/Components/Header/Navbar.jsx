@@ -4,6 +4,7 @@ import './Navbar.css'
 import { Link, Navigate, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import ppicon from '../../assets/ppicon.png'
+import { toast } from 'react-toastify';
 
 
 
@@ -30,10 +31,10 @@ const Navbar = () => {
     const handleSignOut = () => {
         signOutUser()
             .then(() => {
-                console.log('SignOut successfully')
+                toast.success('SignOut successfully')
             })
             .catch(error => {
-                console.log(error)
+                toast.error(error.message)
             })
     }
 

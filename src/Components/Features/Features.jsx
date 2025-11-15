@@ -12,7 +12,7 @@ const Features = ({ featuresPromise }) => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     features.map(feature => (
-                        <div className="card w-full shadow-sm border border-orange-600 rounded-md">
+                        <div key={feature._id} className="card w-full shadow-sm border border-orange-600 rounded-md">
                             <figure className="px-10 pt-5">
                                 <img
                                     src={feature.icon}

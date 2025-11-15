@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 import Swal from "sweetalert2";
 
 
 const MyService = ({ service }) => {
 
     const [myService, setMyService] = useState([])
-    console.log(service)
-
 
     useEffect(() => {
         setMyService(service || []);
@@ -50,6 +49,8 @@ const MyService = ({ service }) => {
 
 
     }
+
+    
 
 
     return (
@@ -99,7 +100,9 @@ const MyService = ({ service }) => {
                                 </td>
                                 <td> $ {card.price}</td>
                                 <th className='flex gap-3'>
-                                    <button className="btn border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white font-bold ">Update</button>
+
+                                    <Link to={`/updateService/${card._id}`}  className="btn border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white font-bold ">Update</Link>
+                                    
                                     <button onClick={() => handleDelete(card._id)} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold ">Delete</button>
                                 </th>
                             </tr>)

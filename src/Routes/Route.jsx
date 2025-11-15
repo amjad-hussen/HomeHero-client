@@ -12,6 +12,7 @@ import AllService from "../Pages/AllService/AllService";
 import ServiceDetails from "../Components/CardDetails/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateUser from "../Pages/Profile/UpdateUser";
+import UpdateService from "../Components/UpdateService/UpdateService";
 
 
 export const router = createBrowserRouter([
@@ -60,7 +61,12 @@ export const router = createBrowserRouter([
         {
             path: '/update/:id',
             element:<PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>,
-            loader: (params) => fetch(`http://localhost:3000/users/${params._id}`)
+            loader: ({params}) => fetch(`http://localhost:3000/users/${params.id}`)
+        },
+        {
+            path:'/updateService/:id',
+            element:<PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:3000/service/${params.id}`)
         }
 
     ]
