@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router';
+import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 
 const AddReview = () => {
@@ -13,6 +14,7 @@ const AddReview = () => {
             comment: e.target.comment.value,
             date: new Date()
         };
+        console.log(review)
          fetch(`http://localhost:3000/services/${id}/review`, {
             method: "PATCH",
             headers: {
@@ -24,14 +26,13 @@ const AddReview = () => {
         .then(data => {
 
             if(data.modifiedCount){
-                Swal.fire({
-                    title: "Thanks!",
-                    text: "Your review has been added.",
-                    icon: "success"
-                })
+                toast.success("Your review has been added.")
                 e.target.reset()
             }
                 
+        })
+        .catch(err => {
+            toast.error (err.message)
         })
         
     }

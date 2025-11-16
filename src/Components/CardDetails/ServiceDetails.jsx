@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 const ServiceDetails = () => {
     const service = useLoaderData()
     const { user } = use(AuthContext)
-    const { _id, serviceName, category, price, description, email, imageUrl, providerName } = service
+    const { _id, serviceName, category, price, description, email, imageUrl, providerName, reviews } = service
     const bookRef = useRef()
 
     const isOwnService = user?.email === email;
@@ -63,7 +63,7 @@ const ServiceDetails = () => {
 
     return (
         <div className='w-11/12 mx-auto'>
-            <div className='border border-orange-600 shadow-2xl my-16  flex-col md:flex-row  flex gap-5 rounded-xl'>
+            <div className='border border-orange-200 shadow-2xl my-16  flex-col md:flex-row  flex gap-5 rounded-xl'>
                 <div>
                     <img className='w-full h-60 md:w-[400px] md:h-[300px] lg:w-[500px] lg:h-[350px] md:m-5 p-5 md:p-0 shadow-xl object-cover rounded-xl ' src={imageUrl} alt="" />
                 </div>
@@ -77,6 +77,25 @@ const ServiceDetails = () => {
                     <p className='text-xl mt-4 font-semibold'>Provider Name: <span className='font-bold'>{providerName}</span></p>
                     <p className='text-xl mt-1 font-semibold'>Email: <span className='font-bold'>{email}</span></p>
                     <p className='text-xl mt-1 font-semibold'>Price: <span className='font-bold'>${price}</span></p>
+
+                    <div className="mt-8">
+                        <h2 className="text-2xl font-bold mb-2">Reviews :</h2>
+
+                        {reviews && reviews.length > 0 ? (
+                            <div className="space-y-4">
+                                {reviews.map((rev, index) => (
+                                    <div key={index} className="border p-3 rounded-md shadow-sm">
+                                        <p><strong>Rating:</strong> {"⭐".repeat(Number(rev.rating))} ({rev.rating})</p>  
+                                        <p><strong>Comment:</strong> {rev.comment || "No comment"}</p>
+                                        <p className="text-gray-500 text-sm">{new Date(rev.date).toLocaleString()}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        ) : (
+                            <p>No reviews yet.</p>
+                        )}
+                    </div>
+
 
                     <div className='mt-4 flex gap-3 '>
                         {isOwnService ?
