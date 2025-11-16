@@ -8,7 +8,7 @@ const Footer = () => {
             <footer className="footer sm:footer-horizontal bg-base-300 text-base-content p-10">
             <nav>
                 <img className=' h-10 w-22' src={logo} alt="" />
-                <p className='text-gray-600'>HomeHero is a modern web application <br />that connects users with trusted  local <br /> service
+                <p >HomeHero is a modern web application <br />that connects users with trusted  local <br /> service
                     providers such as  electricians, <br /> plumbers, and cleaners.  Users can browse <br /> services, book
                     appointments,  and leave <br /> ratings, while providers can manage their listings.</p>
             </nav>

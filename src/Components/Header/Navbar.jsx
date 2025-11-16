@@ -1,10 +1,11 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import logo from '../../assets/logo.png'
 import './Navbar.css'
 import { Link, Navigate, NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../../context/AuthContext';
 import ppicon from '../../assets/ppicon.png'
 import { toast } from 'react-toastify';
+import { FaAffiliatetheme } from 'react-icons/fa';
 
 
 
@@ -12,6 +13,17 @@ const Navbar = () => {
     const [open, setOpen] = useState(false)
     const { user, signOutUser } = use(AuthContext)
     const navigate = useNavigate()
+    const [theme, setTheme] =useState(localStorage.getItem('theme') || 'light')
+
+    useEffect( () => {
+        const html = document.querySelector('html')
+        html.setAttribute('data-theme', theme)
+        localStorage.setItem("theme", theme)
+    }, [theme])
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? 'dark' : 'light')
+    }
 
 
     const links = <>
@@ -66,6 +78,15 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end pr-8">
+
+                <div className='flex items-center gap-2 mr-5'>
+                                <p className='font-bold'>Theme:</p>
+                                <input
+                                onClick={(e) => handleTheme(e.target.checked)}
+                                 type="checkbox"
+                                 defaultChecked={localStorage.getItem('theme') === "dark"}
+                                  className='toggle'/>
+                            </div>
                 {
                     user ?
                         <div className="relative">
@@ -86,7 +107,9 @@ const Navbar = () => {
                             }
                         </div>
                         :
-                        <div className='flex gap-2'>
+                        <div className='flex gap-2 items-center'>
+                            
+
                             <Link to={"/login"} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold">Login</Link>
                             <Link to={"/register"} className="btn border-2 border-orange-600 text-orange-600  font-bold">Register</Link>
                         </div>

@@ -13,6 +13,7 @@ import ServiceDetails from "../Components/CardDetails/ServiceDetails";
 import PrivateRoute from "./PrivateRoute";
 import UpdateUser from "../Pages/Profile/UpdateUser";
 import UpdateService from "../Components/UpdateService/UpdateService";
+import AddReview from "../Components/AddReview/AddReview";
 
 
 export const router = createBrowserRouter([
@@ -67,6 +68,10 @@ export const router = createBrowserRouter([
             path:'/updateService/:id',
             element:<PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:3000/service/${params.id}`)
+        },
+        {
+            path:'/review/:id',
+            Component:AddReview
         }
 
     ]

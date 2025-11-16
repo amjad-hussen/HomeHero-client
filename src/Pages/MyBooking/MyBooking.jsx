@@ -9,44 +9,44 @@ const MyBooking = () => {
 
 
     const handleDelete = (_id) => {
-    
-    
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-    
-    
-                    fetch(`http://localhost:3000/book/${_id}`, {
-                        method: 'DELETE'
+
+
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+
+
+                fetch(`http://localhost:3000/book/${_id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        console.log('deleted', data)
+                        if (data.deletedCount) {
+                            Swal.fire({
+                                title: "Deleted!",
+                                text: "Your Booling has been deleted.",
+                                icon: "success"
+                            });
+                        }
                     })
-                        .then(res => res.json())
-                        .then(data => {
-                            console.log('deleted',data)
-                            if (data.deletedCount) {
-                                Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Your Booling has been deleted.",
-                                    icon: "success"
-                                });
-                            }
-                        })
-    
-                        const remainingService = booked.filter(book => book._id !==_id) 
-                        setBooked(remainingService)
-    
-    
-                }
-            });
-    
-    
-        }
+
+                const remainingService = booked.filter(book => book._id !== _id)
+                setBooked(remainingService)
+
+
+            }
+        });
+
+
+    }
 
     return (
         <div className='w-11/12 mx-auto py-16'>
@@ -101,8 +101,12 @@ const MyBooking = () => {
                                 <td> $ {book.price}</td>
                                 <th className='flex gap-3'>
 
-                                    
-                                    
+                                    <Link to={`/review/${book.serviceId}`}>
+                                        <button className="btn bg-green-500 hover:bg-green-600 text-white font-bold">
+                                         Review
+                                        </button>
+                                    </Link>
+
                                     <button onClick={() => handleDelete(book._id)} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold ">Delete</button>
                                 </th>
                             </tr>)
