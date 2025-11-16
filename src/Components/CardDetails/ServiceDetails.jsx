@@ -26,7 +26,10 @@ const ServiceDetails = () => {
             email,
             price,
             date,
-            serviceId: _id
+            serviceId: _id,
+            providerName,
+            imageUrl,
+            serviceName
 
         }
 
