@@ -4,7 +4,7 @@ import { Link, } from 'react-router';
 import UpdateUser from './UpdateUser';
 
 const Profile = () => {
-    const { user } = use(AuthContext)
+    const { user,updateUserInfo, setUser } = use(AuthContext)
     const updateRef = useRef(null)
 
 
@@ -22,10 +22,10 @@ const Profile = () => {
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl my-16 mx-auto border border-orange-200">
                 <div className="card-body ">
 
-                    <img className='w-30 h-30 mx-auto rounded-full overflow-hidden border-2 border-orange-600 p-1' src={user.photoURL} alt="" />
-                    <h1 className='text-3xl font-bold text-center text-gray-800'>{user.displayName}</h1>
-                    <p className="text-gray-800 mt-1 text-center">Email: {user.email}</p>
-                    <p className='text-gray-800 text-center '>
+                    <img className='w-30 h-30 mx-auto rounded-full overflow-hidden border-2 border-orange-600 p-1 object-cover' src={user.photoURL} alt="" />
+                    <h1 className='text-3xl font-bold text-center '>{user.displayName}</h1>
+                    <p className=" mt-1 text-center">Email: {user.email}</p>
+                    <p className=' text-center '>
                         Last Login: {new Date(user.metadata.lastSignInTime).toLocaleString()}
                     </p>
 
@@ -36,7 +36,7 @@ const Profile = () => {
 
                     {/* modals */}
 
-                    <UpdateUser updateRef={updateRef} />
+                    <UpdateUser updateRef={updateRef} user ={user} updateUserInfo={updateUserInfo} setUser ={setUser} />
 
 
 

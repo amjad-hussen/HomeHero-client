@@ -6,13 +6,13 @@ const Features = ({ featuresPromise }) => {
         <div className=" mx-auto py-16">
             <div className="text-center mb-10">
                 <h2 className="text-3xl md:text-4xl font-bold ">Why Choose <span className='text-orange-600'>HomeHero?</span></h2>
-                <p className="text-gray-600 mt-3">Trusted Local Service Providers at Your Fingertips</p>
+                <p className=" mt-3">Trusted Local Service Providers at Your Fingertips</p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {
                     features.map(feature => (
-                        <div key={feature._id} className="card w-full shadow-sm border border-orange-600 rounded-md">
+                        <div key={feature._id} className="card w-full shadow-sm border border-orange-200 rounded-md">
                             <figure className="px-10 pt-5">
                                 <img
                                     src={feature.icon}
@@ -21,7 +21,7 @@ const Features = ({ featuresPromise }) => {
                             </figure>
                             <div className="card-body pt-5 items-center text-center">
                                 <h2 className="card-title font-bold text-3xl ">{feature.title}</h2>
-                                <p className='font-semibold text-gray-600'>{feature.description}</p>
+                                <p className='font-semibold '>{feature.description}</p>
 
                             </div>
                         </div>

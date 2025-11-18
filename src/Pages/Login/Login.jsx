@@ -15,33 +15,33 @@ const Login = () => {
                 setUser(result.user)
 
 
-                fetch(`http://localhost:3000/users?email=${result.user.email}`)
-                    .then(res => res.json())
-                    .then(existingUser => {
-                        if (existingUser.length === 0) {
-                            // only create new user if not exist
-                            const newUser = {
-                                name: result.user.displayName,
-                                email: result.user.email,
-                                photo: result.user.photoURL
-                            }
+                // fetch(`http://localhost:3000/users?email=${result.user.email}`)
+                //     .then(res => res.json())
+                //     .then(existingUser => {
+                //         if (existingUser.length === 0) {
+                //             // only create new user if not exist
+                //             const newUser = {
+                //                 name: result.user.displayName,
+                //                 email: result.user.email,
+                //                 photo: result.user.photoURL
+                //             }
 
 
 
-                            fetch('http://localhost:3000/users', {
-                                method: 'POST',
-                                headers: {
-                                    'content-type': 'application/json'
-                                },
-                                body: JSON.stringify(newUser)
-                            })
-                        }
+                        //     fetch('http://localhost:3000/users', {
+                        //         method: 'POST',
+                        //         headers: {
+                        //             'content-type': 'application/json'
+                        //         },
+                        //         body: JSON.stringify(newUser)
+                        //     })
+                        // }
 
                         toast.success("Successfully Login")
                         navigate('/')
 
 
-                    })
+                    // })
             })
             .catch(error => {
                 toast.error(error.message)
@@ -53,12 +53,10 @@ const Login = () => {
 
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log("email", email, 'pass', password)
 
         signInUser(email, password)
             .then(result => {
                 setUser(result.user)
-                console.log(result.user)
                 toast.success("Successfully Login")
                 navigate('/')
             })

@@ -66,7 +66,7 @@ const Navbar = () => {
                     </div>
                     <ul
                         tabIndex="-1"
-                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow z-50">
                         {links}
                     </ul>
                 </div>
@@ -79,7 +79,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-end pr-8">
 
-                <div className='flex items-center gap-2 mr-5'>
+                <div className='hidden md:flex items-center gap-2 mr-5'>
                                 <p className='font-bold'>Theme:</p>
                                 <input
                                 onClick={(e) => handleTheme(e.target.checked)}
@@ -90,18 +90,18 @@ const Navbar = () => {
                 {
                     user ?
                         <div className="relative">
-                            <img onClick={() => setOpen(!open)} className='w-10 h-10 rounded-full overflow-hidden cursor-pointer border-2 border-orange-600 p-[1px]' src={user?.photoURL || ppicon} alt="Profile" />
+                            <img onClick={() => setOpen(!open)} className='w-10 h-10 rounded-full overflow-hidden cursor-pointer border-2 border-orange-600 p-px' src={user?.photoURL || ppicon} alt="Profile" />
                             {
                                 open &&
                                 <div className='absolute right-0 mt-2 w-40 bg-white border shadow-md rounded-md z-50'>
 
-                                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 font-semibold">{user?.displayName || "Guest"}</button>
+                                    <button className="block w-full text-left px-4 py-2 hover:bg-gray-200 text-black font-semibold">{user?.displayName || "Guest"}</button>
 
                                     
-                                    <button onClick={handleViewProfile} className="block w-full text-left px-4 py-2 hover:bg-gray-200 font-semibold">View Profile</button>
+                                    <button onClick={handleViewProfile} className="block text-black w-full text-left px-4 py-2 hover:bg-gray-200 font-semibold">View Profile</button>
                                     
 
-                                    <button onClick={handleSignOut} className="block w-full text-left px-4 py-2 hover:bg-gray-200 text-red-600 font-semibold">Log Out</button>
+                                    <button onClick={handleSignOut} className="block w-full text-left px-4 py-2 hover:bg-gray-200 text-red-600  font-semibold">Log Out</button>
 
                                 </div>
                             }
@@ -111,7 +111,7 @@ const Navbar = () => {
                             
 
                             <Link to={"/login"} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold">Login</Link>
-                            <Link to={"/register"} className="btn border-2 border-orange-600 text-orange-600  font-bold">Register</Link>
+                            <Link to={"/register"} className="hidden lg:flex items-center justify-center btn border-2 border-orange-600 text-orange-600  font-bold">Register</Link>
                         </div>
 
 

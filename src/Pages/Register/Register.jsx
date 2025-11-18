@@ -17,26 +17,7 @@ const Register = () => {
             .then(result => {
                 setUser(result.user)
                 toast.success('You SignUp Successfully')
-
-                const newUser = {
-                    name: result.user.displayName,
-                    email: result.user.email,
-                    photo: result.user.photoURL
-                }
-
-                fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(newUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log('data after user save', data)
-                        navigate("/")
-                    })
-
+                navigate("/")
             })
             .catch(error => {
                 toast.error(error.message)
@@ -51,7 +32,6 @@ const Register = () => {
         const photo = e.target.photo.value;
         const password = e.target.password.value;
 
-        const newUser = { name, email, password, photo }
 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#^])[A-Za-z\d@$!%*?&#^]{8,}$/;
 
@@ -66,31 +46,20 @@ const Register = () => {
                     displayName: name,
                     photoURL: photo
                 })
-                .then( res => {
+                .then( () => {
                     
                     toast.success('You SignUp Successfully')
+                    navigate("/")
                 })
                 .catch(error => {
                     toast.error(error.message)
                 })
                 
 
-                fetch('http://localhost:3000/users', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(newUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log('data after user save', data)
-                        navigate("/")
-                    })
-
             })
             .catch(error => {
                 toast.error(error.message)
+                
             })
     }
 

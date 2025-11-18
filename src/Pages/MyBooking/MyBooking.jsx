@@ -53,7 +53,7 @@ const MyBooking = () => {
 
             <div className="text-center mb-10">
                 <h2 className="text-3xl md:text-4xl font-bold ">My Booked <span className='text-orange-600'> Services</span></h2>
-                <p className="text-gray-600 mt-3">View all your booked services and their details in one place.</p>
+                <p className=" mt-3">View all your booked services and their details in one place.</p>
             </div>
 
             <h1 className="text-3xl font-black text-orange-500 mb-5">Total Booked: {booked.length}</h1>

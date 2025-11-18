@@ -26,7 +26,7 @@ const Slide = ({slidePromise}) => {
                                 <div className='z-20 text-center '> 
                                     <h2 className='text-2xl md:text-4xl lg:text-6xl font-bold text-white'>{slide.headline}</h2>
                                     <p className='font-semibold text-white mt-3 '>{slide.details}</p>
-                                    <Link to={'/service'} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold border-none shadow-none mt-5 px-5 py-2 text-xl">{slide.button}</Link>
+                                    <Link to={'/allService'} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold border-none shadow-none mt-5 px-5 py-2 text-xl">{slide.button}</Link>
                                 </div>
 
                             </div>

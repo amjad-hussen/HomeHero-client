@@ -14,6 +14,7 @@ import PrivateRoute from "./PrivateRoute";
 import UpdateUser from "../Pages/Profile/UpdateUser";
 import UpdateService from "../Components/UpdateService/UpdateService";
 import AddReview from "../Components/AddReview/AddReview";
+import Error from "../Components/Error/Error";
 
 
 export const router = createBrowserRouter([
@@ -72,6 +73,10 @@ export const router = createBrowserRouter([
         {
             path:'/review/:id',
             Component:AddReview
+        },
+        {
+            path:'/*',
+            Component:Error
         }
 
     ]
