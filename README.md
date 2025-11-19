@@ -1,16 +1,25 @@
-# React + Vite
+# HomeHero
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live Site:** (https://coruscating-biscochitos-df548d.netlify.app/)
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## React Compiler
+- **User Authentication:** Sign up, login, and login with Google. Auth state managed globally.
+- **Service Listing & Management:** Users can add, update, and delete their own services.
+- **Price Filtering:** Filter services using minimum and maximum price ranges.
+- **Dynamic Service Display:** All services load dynamically with loading spinners to improve UX.
+- **Booking System:** Users can book a service and avoid duplicate bookings.
+- **Responsive UI:** Fully responsive layout using Tailwind CSS for mobile, tablet, and desktop.
+- **Admin Features:** Optional — ability to manage slides, features, and service reviews.
+- **Real-time Updates:** My Services page automatically updates after adding or deleting a service.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Authentication:** Firebase Auth (Email/Password & Google)
+- **Other Tools:** SweetAlert2 for confirmation dialogs
+
