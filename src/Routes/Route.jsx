@@ -53,22 +53,22 @@ export const router = createBrowserRouter([
         {
             path: '/profile',
             element:<PrivateRoute><Profile></Profile></PrivateRoute>,
-            loader: (params) => fetch(`http://localhost:3000/users/${params._id}`)
+            loader: (params) => fetch(`https://homehero-server-nine.vercel.app/users/${params._id}`)
         },
         {
             path: '/serviceDetails/:id',
-            loader: ({params})=> fetch(`http://localhost:3000/service/${params.id}`),
+            loader: ({params})=> fetch(`https://homehero-server-nine.vercel.app/service/${params.id}`),
             element: <PrivateRoute><ServiceDetails></ServiceDetails></PrivateRoute>
         },
         {
             path: '/update/:id',
             element:<PrivateRoute><UpdateUser></UpdateUser></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:3000/users/${params.id}`)
+            loader: ({params}) => fetch(`https://homehero-server-nine.vercel.app/users/${params.id}`)
         },
         {
             path:'/updateService/:id',
             element:<PrivateRoute><UpdateService></UpdateService></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:3000/service/${params.id}`)
+            loader: ({params}) => fetch(`https://homehero-server-nine.vercel.app/service/${params.id}`)
         },
         {
             path:'/review/:id',

@@ -22,7 +22,7 @@ const AddService = () => {
 
         }
         
-        fetch('http://localhost:3000/allService', {
+        fetch('https://homehero-server-nine.vercel.app/allService', {
             method:'POST',
             headers:{
                 'content-type': 'application/json'

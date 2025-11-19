@@ -33,7 +33,7 @@ const ServiceDetails = () => {
 
         }
 
-        fetch('http://localhost:3000/book', {
+        fetch('https://homehero-server-nine.vercel.app/book', {
             method: "POST",
             headers: {
                 'content-type': 'application/json'

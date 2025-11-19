@@ -4,9 +4,9 @@ import Service from '../../Components/HomeLayout/Service';
 import Features from '../../Components/Features/Features';
 import TestimonialCard from '../../Components/TestimonialCard/TestimonialCard';
 
-    const slidePromise = fetch('http://localhost:3000/slide').then(res => res.json())
-    const serivePromise = fetch('http://localhost:3000/service').then(res =>res.json());
-    const featuresPromise = fetch('http://localhost:3000/features').then(res => res.json());
+    const slidePromise = fetch('https://homehero-server-nine.vercel.app/slide').then(res => res.json())
+    const serivePromise = fetch('https://homehero-server-nine.vercel.app/service').then(res =>res.json());
+    const featuresPromise = fetch('https://homehero-server-nine.vercel.app/features').then(res => res.json());
 
 const Home = () => {
     return (

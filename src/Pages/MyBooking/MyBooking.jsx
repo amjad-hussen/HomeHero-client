@@ -2,7 +2,7 @@ import React, { use, useState } from 'react';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
-const bookPromise = fetch('http://localhost:3000/book').then(res => res.json())
+const bookPromise = fetch('https://homehero-server-nine.vercel.app/book').then(res => res.json())
 const MyBooking = () => {
     const books = use(bookPromise)
     const [booked, setBooked] = useState(books)
@@ -23,7 +23,7 @@ const MyBooking = () => {
             if (result.isConfirmed) {
 
 
-                fetch(`http://localhost:3000/book/${_id}`, {
+                fetch(`https://homehero-server-nine.vercel.app/book/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

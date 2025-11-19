@@ -19,7 +19,7 @@ const UpdateService = () => {
       description: form.description.value,
     };
 
-    fetch(`http://localhost:3000/service/${data._id}`, {
+    fetch(`https://homehero-server-nine.vercel.app/service/${data._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

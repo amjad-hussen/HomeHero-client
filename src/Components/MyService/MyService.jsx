@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../context/AuthContext";
 
 
 const MyService = ({ service }) => {
 
     const [myService, setMyService] = useState([])
+    const { loading, setLoading } = use(AuthContext)
 
     useEffect(() => {
         setMyService(service || []);
@@ -24,9 +26,9 @@ const MyService = ({ service }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
+                setLoading(true);
 
-
-                fetch(`http://localhost:3000/allService/${_id}`, {
+                fetch(`https://homehero-server-nine.vercel.app/allService/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -40,17 +42,20 @@ const MyService = ({ service }) => {
                         }
                     })
 
-                    const remainingService = myService.filter(service => service._id !==_id) 
-                    setMyService(remainingService)
-
-
+                const remainingService = myService.filter(service => service._id !== _id)
+                setMyService(remainingService)
             }
-        });
+            setLoading(false);
+        })
+            .catch(err => {
+                console.error(err);
+                setLoading(false);
+            });
 
 
     }
 
-    
+
 
 
     return (
@@ -101,8 +106,8 @@ const MyService = ({ service }) => {
                                 <td> $ {card.price}</td>
                                 <th className='flex gap-3'>
 
-                                    <Link to={`/updateService/${card._id}`}  className="btn border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white font-bold ">Update</Link>
-                                    
+                                    <Link to={`/updateService/${card._id}`} className="btn border-2 border-orange-600 text-orange-600 hover:bg-orange-500 hover:text-white font-bold ">Update</Link>
+
                                     <button onClick={() => handleDelete(card._id)} className="btn bg-orange-500 hover:bg-orange-600 text-white font-bold ">Delete</button>
                                 </th>
                             </tr>)

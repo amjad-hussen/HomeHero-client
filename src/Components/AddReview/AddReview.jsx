@@ -15,7 +15,7 @@ const AddReview = () => {
             date: new Date()
         };
         console.log(review)
-         fetch(`http://localhost:3000/services/${id}/review`, {
+         fetch(`https://homehero-server-nine.vercel.app/services/${id}/review`, {
             method: "PATCH",
             headers: {
                 'content-type' : 'application/json'

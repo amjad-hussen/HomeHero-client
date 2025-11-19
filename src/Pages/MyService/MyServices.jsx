@@ -12,7 +12,7 @@ const MyServices = () => {
     
     useEffect( () => {
         if(user?.email) {
-            fetch(`http://localhost:3000/allService?email=${user.email}`)
+            fetch(`https://homehero-server-nine.vercel.app/allService?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data)

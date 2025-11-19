@@ -15,7 +15,7 @@ const Login = () => {
                 setUser(result.user)
 
 
-                // fetch(`http://localhost:3000/users?email=${result.user.email}`)
+                // fetch(`https://homehero-server-nine.vercel.app/users?email=${result.user.email}`)
                 //     .then(res => res.json())
                 //     .then(existingUser => {
                 //         if (existingUser.length === 0) {
@@ -28,7 +28,7 @@ const Login = () => {
 
 
 
-                        //     fetch('http://localhost:3000/users', {
+                        //     fetch('https://homehero-server-nine.vercel.app/users', {
                         //         method: 'POST',
                         //         headers: {
                         //             'content-type': 'application/json'
