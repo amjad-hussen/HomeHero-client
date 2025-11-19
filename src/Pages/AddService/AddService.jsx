@@ -38,7 +38,7 @@ const AddService = () => {
                 text: 'Your service has been added successfully.',
                 confirmButtonColor: '#FF6B00'
             }).then(() => {
-                navigate('/allService'); 
+                navigate('/myServices'); 
             });
         } else {
             Swal.fire({

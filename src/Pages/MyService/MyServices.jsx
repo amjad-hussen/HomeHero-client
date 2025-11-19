@@ -1,12 +1,14 @@
 import React, { use, useEffect, useState } from 'react';
 import MyService from '../../Components/MyService/MyService';
 import { AuthContext } from '../../context/AuthContext';
+import { useLocation } from 'react-router';
 
 
 
 const MyServices = () => {
     const {user} = use(AuthContext)
     const [service, setService] = useState([])
+    const location = useLocation()
     
     useEffect( () => {
         if(user?.email) {
@@ -18,7 +20,7 @@ const MyServices = () => {
             })
         }
 
-    }, [user?.email])
+    }, [user?.email , location.pathname])
 
     return (
         <div className='mx-auto py-16'>

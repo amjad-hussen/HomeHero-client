@@ -1,12 +1,20 @@
+import { use } from 'react';
 import './App.css'
+import { AuthContext } from './context/AuthContext';
+import { Router } from 'react-router';
 
 function App() {
+   const { loading } = use(AuthContext);
+
+  if (loading) {
+    return <loading />; 
+  }
 
 
   return (
     <>
       
-      <h1>Vite + React</h1>
+       <Router />
       
     </>
   )

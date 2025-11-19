@@ -1,11 +1,24 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import ServiceCard from '../../Components/HomeLayout/ServiceCard';
+import { AuthContext } from '../../context/AuthContext';
 
 
-const allServicepromise = fetch('http://localhost:3000/allService').then(res => res.json())
 
 const AllService = () => {
-    const allService = use(allServicepromise)
+    const [services, setServices] = useState([]);
+    const{loading, setLoading } = use(AuthContext)
+
+    useEffect(() => {
+        fetch("http://localhost:3000/allService")
+            .then((res) => res.json())
+            .then((data) => {
+                setServices(data);
+                setLoading(false);
+            });
+    }, []);
+    if(loading) {
+        return
+    }
     
     return (
         <div className='pt-16 w-11/12 mx-auto'>
@@ -13,7 +26,7 @@ const AllService = () => {
             <p className=" mt-3 text-center">Explore a wide range of trusted local services, from plumbing and electrical work to home cleaning, all at your fingertips.</p>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-10 w-full'>
                 {
-                    allService.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
+                    services.map(service => <ServiceCard key={service._id} service={service}></ServiceCard>)
                 }
             </div>
             
